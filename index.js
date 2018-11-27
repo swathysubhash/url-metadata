@@ -39,6 +39,7 @@ module.exports = function (url, options) {
       if (response.request.uri.href) url = response.request.uri.href
       return dfd.resolve(parse(url, body, opts))
     }
+    return dfd.reject({ Error: "response code " + response.statusCode });
   })
 
   return dfd.promise
